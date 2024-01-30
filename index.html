@@ -1,3 +1,41 @@
-<h1>Super Rad Net Art</h1>
-<h2>by maryam</h2>
-hello
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+
+<script>
+  /* global nn */
+  // replace this with your own GIF
+  const gifURL = 'butterfly.gif'
+  // replace this with a color that compliments your GIF
+  const bgColor = '#e585ca'
+  
+  function createGif(x, y, w, h, url) {
+    mn.create('img')
+      .set({ src: url})
+      .css({
+        position: 'absolute',
+        left: x + 'px', // you can write it like this
+        top: '${y}px', // or write it like this
+        width: '${w}px',
+        height: '${h}px',
+        border: '1px solid black'
+      })
+      .addTo('body')
+}
+
+  function setup () {
+    //const b = nn.get('body')
+    //const style = { 'background-color': bgColor }
+    //b.css(style)
+    
+    nn.get('body').css({ 'background-color': bgColor })
+    const s = 140
+    // const x = (nn.width / 2) - (s / 2) // width of window
+    // const y = (nn.height / 2) - (s / 2) //height of window
+    const x = nn.random(0, nn.width)
+    const y = nn.random(0, nn.height)
+    createGif(x, y, s, s, gifURL)
+  }
+  
+  nn.on('load', setup)
+  
+  
+</script>
